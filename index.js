@@ -1,10 +1,20 @@
 import express from "express";
 import { initDb as databaseInit } from "./data/database.js";
+import router from "./routes/index.js";
+
 
 
 const app = express();
 const port = process.env.PORT || 1313;
 
+
+app
+    .use(express.json())
+    .use((req, res, next) => {
+        res.setHeader('Access-Control-Allow-Origin', '*')
+        next();
+    })
+    .use('/', router);
 
 app.get('/', (req, res) => {res.send("Project W5-6. Futher information type api-docs")});
 

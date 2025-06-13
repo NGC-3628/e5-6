@@ -1,5 +1,5 @@
 import express from 'express';
-import templeRoutes from './temples,js';
+import templeRoutes from './temples.js';
 
 const router = express.Router();
 

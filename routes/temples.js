@@ -10,9 +10,9 @@ const router = express.Router();
 
 
 router.get('/', getAll);
-router.get('/', getSingle);
+router.get('/:id', getSingle);
 router.get('/', addTemples);
-router.get('/', updateTemple);
+router.get('/:id', updateTemple);
 router.get('/', deleteTemple);
 
 
