@@ -20,13 +20,13 @@ const router = express.Router();
             .isString().withMessage('last name must be a String')
             .notEmpty().withMessage('lasr name is required'),
         body('anounced')
-            .isNumber().withMessage('birthday name must be a number')
+            .isNumeric().withMessage('birthday name must be a number')
             .notEmpty().withMessage('birthday name is required'),
         body('breakground')
-            .isNumber().withMessage('ward name must be a String')
+            .isNumeric().withMessage('ward name must be a String')
             .notEmpty().withMessage('ward name is required'),
         body('dedication')
-            .isNumber().withMessage('The ministering partner name must be a String')
+            .isNumeric().withMessage('The ministering partner name must be a String')
             .notEmpty().withMessage('The ministering partner name is required'),
         body('notes')
             .isString().withMessage('The served mission must be a String')

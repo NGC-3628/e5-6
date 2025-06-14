@@ -2,7 +2,7 @@ import express from 'express';
 import templeRoutes from './temples.js';
 import memberRoutes from './members.js';
 import passport from 'passport';
-import swaggerUI from 'swagger-ui-express';
+import swaggerUi from 'swagger-ui-express';
 import{ createRequire } from 'module';
 
 //swagger
