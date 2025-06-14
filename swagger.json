@@ -8,7 +8,7 @@
   "host": "https://e5-6.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/": {
