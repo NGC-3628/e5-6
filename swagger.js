@@ -5,7 +5,7 @@ const doc = {
         title: 'API Final project',
         description: 'userApi'
     }, 
-    host: 'localhost:1313',
+    host: 'https://e5-6.onrender.com',
     schemas: ['https'],
 };
 
