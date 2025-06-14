@@ -9,15 +9,15 @@ const templeSchema = mongoose.Schema({
         required: true
     },
     anounced:{
-        type: Date,
+        type: Number,
         required: true
     },
     breakground:{
-        type: Date,
+        type: Number,
         required: true
     },
     dedication:{
-        type: Date,
+        type: Number,
         required: true
     },
     notes:{
@@ -46,7 +46,7 @@ const memberSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    MinisteringPartner:{
+    ministeringPartner:{
         type: String
     },
     servedMission: {

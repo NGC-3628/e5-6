@@ -1,7 +1,7 @@
 import express from 'express';
 import { getAll,
-         addTemples,
          getSingle,
+         addTemple,
          updateTemple,
          deleteTemple
  } from '../controllers/temples.js';
@@ -11,9 +11,9 @@ const router = express.Router();
 
 router.get('/', getAll);
 router.get('/:id', getSingle);
-router.get('/', addTemples);
-router.get('/:id', updateTemple);
-router.get('/', deleteTemple);
+router.post('/', addTemple);
+router.put('/:id', updateTemple);
+router.delete('/:id', deleteTemple);
 
 
 

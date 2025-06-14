@@ -5,10 +5,10 @@ import { ObjectId } from "mongodb";
 const getAll = async (req, res) => {
     try {
         const db = getDatabase();
-        const result = await db.collection('facilities_address').find();
-        result.toArray().then((facilities_address) => {
+        const result = await db.collection('directory_members').find();
+        result.toArray().then((directory_members) => {
             res.setHeader('Content-Type', 'application/json');
-            res.status(200).json(facilities_address);
+            res.status(200).json(directory_members);
         });
     } catch (err) {
         res.status(500).json({ message: err.message || 'Internal server error' });
@@ -20,11 +20,11 @@ const getSingle = async (req, res) => {
     try {
         const userId = new ObjectId(req.params.id);
         const db = getDatabase();
-        const result = await db.collection('facilities_address').find({ _id: userId });
-        result.toArray().then((facilities_address) => {
-            if (facilities_address.length > 0) {
+        const result = await db.collection('directory_members').find({ _id: userId });
+        result.toArray().then((directory_members) => {
+            if (directory_members.length > 0) {
                 res.setHeader('Content-Type', 'application/json');
-                res.status(200).json(facilities_address[0]);
+                res.status(200).json(directory_members[0]);
             } else {
                 res.status(404).json({ message: 'Student cannot be found' });
             }
@@ -40,19 +40,19 @@ const getSingle = async (req, res) => {
 
 
 //POST
-const addTemple = async (req, res) => {
+const addMember = async (req, res) => {
     const db = getDatabase();
-    const facility = {
-        name: req.body.name,
-        address: req.body.address,
-        anounced: req.body.anounced,
-        breakground: req.body.breakground,
-        dedication: req.body.dedication,
-        notes: req.body.notes
+    const members = {
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        birthday: req.body.birthday,
+        ward: req.body.ward,
+        ministeringPartner: req.body.ministeringPartner,
+        servedMission: req.body.servedMission
     };
 
     try{
-        const result = await db.collection('facilities_address').insertOne(facility);
+        const result = await db.collection('directory_members').insertOne(members);
         res.status(201).json(result);
     } catch (err) {
         res.status(500).json({message: err.message});
@@ -62,20 +62,20 @@ const addTemple = async (req, res) => {
 
 
 //UPDATE   update status
-const updateTemple = async (req, res) => {
+const updateMember = async (req, res) => {
     const db = getDatabase();
     const userId = new ObjectId(req.params.id);
     const updatedTemple = {
-        name: req.body.name,
-        address: req.body.address,
-        anounced: req.body.anounced,
-        breakground: req.body.breakground,
-        dedication: req.body.dedication,
-        notes: req.body.notes
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        birthday: req.body.birthday,
+        ward: req.body.ward,
+        ministeringPartner: req.body.ministeringPartner,
+        servedMission: req.body.servedMission
     };
 
     try {
-        const result = await db.collection('facilities_address').updateOne(
+        const result = await db.collection('directory_members').updateOne(
             { _id: userId },
             { $set: req.body }
         );
@@ -87,12 +87,12 @@ const updateTemple = async (req, res) => {
 
 
 //DELETE
-const deleteTemple = async (req, res) => {
+const deleteMember = async (req, res) => {
     const db = getDatabase();
     const userId = new ObjectId(req.params.id);
 
     try {
-        const result = await db.collection('facilities_address').deleteOne({ _id: userId });
+        const result = await db.collection('directory_members').deleteOne({ _id: userId });
         res.status(200).json(result);
     } catch (err) {
         res.status(500).json({ message: err.message });
@@ -102,7 +102,7 @@ const deleteTemple = async (req, res) => {
 export {
     getAll,
     getSingle,
-    addTemple,
-    updateTemple,
-    deleteTemple
+    addMember,
+    updateMember,
+    deleteMember
 };
