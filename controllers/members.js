@@ -45,7 +45,7 @@ const addMember = async (req, res) => {
     const members = {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
-        birthday: req.body.birthday,
+        birthDay: req.body.birthDay,
         ward: req.body.ward,
         ministeringPartner: req.body.ministeringPartner,
         servedMission: req.body.servedMission

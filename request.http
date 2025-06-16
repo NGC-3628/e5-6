@@ -36,12 +36,12 @@ POST http://localhost:1313/members HTTP/1.1
 Content-Type: application/json
 
 {
-    "firstName":"Isaac",
-    "lastName":"Iturralde",
-    "birthDay":"11-08-1997",
-    "ward":"Senderos",
-    "ministeringPartner":"",
-    "servedMission":"Texas San Antonio USA"
+    "firstName": "Hadasa",
+    "lastName": "Tagle",
+    "birthday": "1994/11/25",
+    "ward": "Senderos",
+    "ministeringPartner": "Anahi Silos",
+    "servedMission": "Merida Mexico Mission"
 }
 
 ###
