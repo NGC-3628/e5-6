@@ -39,7 +39,7 @@ const memberSchema = mongoose.Schema({
         required: true
     },
     birthDay: {
-        type: Date,
+        type: String,
         required: true
     },
     ward: {

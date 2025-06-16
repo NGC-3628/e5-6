@@ -21,7 +21,7 @@ import { getAll,
             .isString().withMessage('last name must be a String')
             .notEmpty().withMessage('lasr name is required'),
         body('birthDay')
-            .isString().withMessage('birthday name must be a number')
+            .isString().withMessage('birthday name must be a string')
             .notEmpty().withMessage('birthday name is required'),
         body('ward')
             .isString().withMessage('ward name must be a String')
