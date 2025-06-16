@@ -23,7 +23,7 @@ const router = express.Router();
             .isNumeric().withMessage('birthday name must be a number')
             .notEmpty().withMessage('birthday name is required'),
         body('breakground')
-            .isNumeric().withMessage('ward name must be a String')
+            .isNumeric().withMessage('ward name must be a number')
             .notEmpty().withMessage('ward name is required'),
         body('dedication')
             .isNumeric().withMessage('The ministering partner name must be a String')

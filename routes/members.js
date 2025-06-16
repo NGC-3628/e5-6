@@ -20,7 +20,7 @@ import { getAll,
         body('lastName')
             .isString().withMessage('last name must be a String')
             .notEmpty().withMessage('lasr name is required'),
-        body('birthDay')
+        body('birthday')
             .isString().withMessage('birthday date must be a string')
             .notEmpty().withMessage('birthday date is required'),
         body('ward')
