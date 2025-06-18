@@ -55,7 +55,7 @@ databaseInit((err) => {
         console.log(err)
     } else {
         app.listen(port, () => {
-        console.log(`Database is listening and Node Running i port ${port}`);
+        console.log(`Database is listening and Node Running in port ${port}`);
         });
     }
 });
