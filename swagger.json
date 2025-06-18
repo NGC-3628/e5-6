@@ -5,10 +5,10 @@
     "description": "userApi",
     "version": "1.0.0"
   },
-  "host": "https://e5-6.onrender.com",
+  "host": "e5-6.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/": {
