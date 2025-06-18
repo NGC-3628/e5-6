@@ -1,6 +1,8 @@
 import express from 'express';
 import templeRoutes from './temples.js';
 import memberRoutes from './members.js';
+import wardRoutes from './wards.js';
+import donationRoutes from './donations.js';
 import passport from 'passport';
 import swaggerUi from 'swagger-ui-express';
 import{ createRequire } from 'module';
@@ -16,6 +18,9 @@ const router = express.Router();
 //API routes
 router.use('/temples', templeRoutes);
 router.use('/members', memberRoutes);
+router.use('/wards', wardRoutes);
+router.use('/donations', donationRoutes);
+
 
 
 //routes swagger

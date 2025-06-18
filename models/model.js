@@ -54,4 +54,34 @@ const memberSchema = mongoose.Schema({
     }
 });
 
-export{memberSchema, templeSchema};
+const wardSchema = mongoose.Schema({
+    bishop: {
+        type: String,
+        required: true
+    },
+    membership: {
+        type: Number,
+        required: true
+    },
+    address: {
+        type: String,
+        requiered: true
+    }
+});
+
+const donationSchema = mongoose.Schema({
+    member: {
+        type: String,
+        requiered: true
+    },
+    donationType: {
+        type: String,
+        required: true
+    },
+    amount: {
+        type: Number,
+        required: true
+    }
+});
+
+export{memberSchema, templeSchema, wardSchema, donationSchema};

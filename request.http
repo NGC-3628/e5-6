@@ -12,12 +12,11 @@ Content-Type: application/json
 
 
 {
-    "name":"Templo de Torreon",
-    "address":"56 Sauce St Gomez Palacio",
-    "anounced":"2021",
-    "breakground":"2022",
-    "dedication":"2026",
-    "notes":"it is another city"
+    "name": "Santiago Chile Temple",
+    "address": "Santiago, Chile",
+    "announced_date": "1979",
+    "erected_date": "1983",
+    "dedication_date": "1983"
 }
 ### UPDATE temple
 PUT http://localhost:1313/temples/id HTTP/1.1
