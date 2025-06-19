@@ -88,15 +88,21 @@ const updateMember = async (req, res) => {
 
 //DELETE
 const deleteMember = async (req, res) => {
+const memberId = new ObjectId(req.params.id);
+  try {
     const db = getDatabase();
-    const userId = new ObjectId(req.params.id);
-
-    try {
-        const result = await db.collection('directory_members').deleteOne({ _id: userId });
-        res.status(200).json(result);
-    } catch (err) {
-        res.status(500).json({ message: err.message });
+    const result = await db.collection('members').deleteOne({ _id: memberId });
+    
+    if (result.deletedCount > 0) {
+      res.setHeader('Content-Type', 'application/json');
+      res.status(200).json(result); // Use 200 for success with a body
+    } else {
+      // If no document was found with that ID, send 404
+      res.status(404).json({ message: 'Member not found or could not be deleted.' });
     }
+  } catch (error) {
+    res.status(500).json({ message: 'An error occurred while deleting the member.', error: error.message });
+  }
 };
 
 export {

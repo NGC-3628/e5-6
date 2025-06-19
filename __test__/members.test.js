@@ -1,5 +1,6 @@
-import { addMember, getAll, updateMember } from '../controllers/members.js';
+import { addMember, getAll, updateMember, deleteMember } from '../controllers/members.js';
 import { getDatabase } from '../data/database.js';
+import { ObjectId } from 'mongodb';
 
 
 jest.mock('../data/database.js');
@@ -118,6 +119,67 @@ describe('Member Controller', () => {
     });
   })
 
+  //try delete
+  describe('deleteMember function', () => {
+  it('should delete a member and return a 200 status code', async () => {
+    // 1. Arrange
+    const mockMemberId = new ObjectId();
+    const req = {
+      params: { id: mockMemberId.toHexString() },
+    };
+    const res = {
+      setHeader: jest.fn(),
+      status: jest.fn().mockReturnThis(),
+      json: jest.fn(),
+    };
+    const mockDeleteResult = { acknowledged: true, deletedCount: 1 };
 
+    // FIX: Define the mock function first
+    const mockDeleteOne = jest.fn().mockResolvedValue(mockDeleteResult);
+    const mockDb = {
+      collection: () => ({
+        deleteOne: mockDeleteOne,
+      }),
+    };
+    getDatabase.mockReturnValue(mockDb);
+
+    // 2. Act
+    await deleteMember(req, res);
+
+    // 3. Assert
+    expect(res.status).toHaveBeenCalledWith(200);
+    expect(res.json).toHaveBeenCalledWith(mockDeleteResult);
+
+    expect(mockDeleteOne).toHaveBeenCalledWith({ _id: mockMemberId });
+  });
+
+  it('should return a 404 status code if member is not found', async () => {
+    // 1. Arrange
+    const mockMemberId = new ObjectId();
+    const req = {
+      params: { id: mockMemberId.toHexString() },
+    };
+    const res = {
+      status: jest.fn().mockReturnThis(),
+      json: jest.fn(),
+    };
+    const mockDeleteResult = { acknowledged: true, deletedCount: 0 };
+
+    const mockDeleteOne = jest.fn().mockResolvedValue(mockDeleteResult);
+    const mockDb = {
+      collection: () => ({
+        deleteOne: mockDeleteOne,
+      }),
+    };
+    getDatabase.mockReturnValue(mockDb);
+
+    // 2. Act
+    await deleteMember(req, res);
+
+    // 3. Assert
+    expect(res.status).toHaveBeenCalledWith(404);
+    expect(res.json).toHaveBeenCalledWith({ message: 'Member not found or could not be deleted.' });
+  });
+});
 });
 
